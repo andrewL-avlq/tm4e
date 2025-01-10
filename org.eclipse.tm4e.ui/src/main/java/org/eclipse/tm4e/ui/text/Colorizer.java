@@ -107,7 +107,7 @@ class Colorizer {
 			List<TMToken> tokens = null;
 			for (int lineIndex = fromLineIndex; lineIndex <= toLineIndex; lineIndex++) {
 				tokens = tmModel.getLineTokens(lineIndex);
-				if (tokens == null) {
+				if (tokens == null || (!tokens.isEmpty() && tokens.get(tokens.size() - 1).startIndex > doc.getLineLength(lineIndex))) {
 					if (TMUIPlugin.isLogTraceEnabled())
 						TMUIPlugin.logTrace("TextMate tokens not yet available for line " + lineIndex);
 					continue;
